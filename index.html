@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Allmax Citadel — The Hollow Tide</title>
+<style>
+:root{--bg:#0b1520;--bg2:#0f1e2d;--panel:#122335;--line:#1e3a52;--text:#d8e6f0;
+--dim:#8aa5b8;--head:#f0f7fc;--sea:#4fd1c5;--sand:#e8c47c;--coral:#ff7d6b;
+--shadow:0 8px 30px rgba(0,0,0,.45)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1200px 700px at 80% -10%,#14293d 0%,var(--bg) 55%);
+color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+#gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.gatecard{background:var(--panel);border:1px solid var(--line);border-radius:16px;
+box-shadow:var(--shadow);padding:40px 36px;max-width:430px;width:100%;text-align:center}
+.gatecard h1{margin:.2em 0 .1em;font-size:1.4rem;color:var(--head)}
+.gatecard p{color:var(--dim);font-size:.95rem;margin:.4em 0 1.4em}
+.gatecard input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);
+background:var(--bg2);color:var(--text);font-size:1rem;text-align:center;letter-spacing:.06em}
+.gatecard button{margin-top:14px;width:100%;padding:12px;border:0;border-radius:10px;cursor:pointer;
+background:linear-gradient(135deg,#2b8f86,#4fd1c5);color:#05201d;font-weight:700;font-size:1rem}
+.gatecard .err{color:var(--coral);font-size:.9rem;min-height:1.3em;margin-top:10px}
+#app{display:none;max-width:980px;margin:0 auto;padding:0 20px 120px}
+header.top{position:sticky;top:0;z-index:5;background:rgba(11,21,32,.92);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line);margin:0 -20px;padding:12px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.brand{font-weight:800;color:var(--head)}
+.brand .tide{color:var(--sea)}
+.tabbtn{padding:7px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;
+color:var(--dim);cursor:pointer;font-weight:600}
+.tabbtn.on{background:var(--sea);border-color:var(--sea);color:#05201d}
+.updated{margin-left:auto;color:var(--dim);font-size:.8rem}
+h1{color:var(--head);font-size:2rem;margin:.9em 0 .2em}
+.stat{display:inline-block;background:var(--panel);border:1px solid var(--line);border-radius:12px;
+padding:14px 22px;margin:8px 12px 8px 0}
+.stat .v{font-size:1.5rem;color:var(--sand);font-weight:800}
+.stat .k{color:var(--dim);font-size:.8rem;letter-spacing:.05em;text-transform:uppercase}
+.pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:16px 0}
+.pcard h2{margin:.1em 0 .2em;color:var(--head)}
+.pmeta{color:var(--dim);font-size:.86rem;margin-bottom:8px}
+.pmeta b{color:var(--sand)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.6em 0}
+th{background:#16334b;color:var(--head);text-align:left;padding:8px 12px}
+td{padding:7px 12px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(odd){background:rgba(255,255,255,.02)}
+.muted{color:var(--dim)}
+</style></head><body>
+<div id="gate"><div class="gatecard">
+  <h1>The Allmax Citadel</h1>
+  <p>The Hollow Tide — team site. Enter your team's passcode.</p>
+  <input id="pw" type="password" autocomplete="off" placeholder="passcode">
+  <button id="go">Open</button>
+  <div class="err" id="err"></div>
+</div></div>
+<div id="app">
+  <header class="top">
+    <span class="brand">The Allmax Citadel <span class="tide">· The Hollow Tide</span></span>
+    <button class="tabbtn on" data-t="team" onclick="pick('team')">Team</button>
+    <button class="tabbtn" data-t="players" onclick="pick('players')">Players</button>
+    <span class="updated" id="updated"></span>
+  </header>
+  <div id="main"></div>
+</div>
+<script>
+const ENC={salt:"JJpVl74ATyafIylbrC7+xg==",iv:"XTOAylFwl8pTtDPq",ct:"x2i529TH4yn8wcTyXMxFIq2YqzNc2hY0bCXM80J/qg87tcFFuiG9qFvCV9iXYhogziH+cqazFSQCzhEaYO9v+CGD3oDREvYNMjtBk1BAztWupITii5oxfpndN4uxkG26thiMmEWKxiCMYzvsKe0JwkXpA4QFyW/bNQxzSba8kNavFMrvKW2Eagn3iTmCXAZfMgvvh7mpJiEcNHcY8z+IvKp1dV3JGRLAhkTIR6b4vmTTBNRV1NLXgJYfVXd0qf4/7nCuRGXP//vLqoop1rbwXJlspwTKx+KxlcO5/gvWHhglra8iEvt3+4ZnYQmNCgVf0eZ9L1Zx218F/Z4Dq7QleYZ3xrlPfYTbpdDCTta2oL0U5OAALN2MagSXvIeyQVOAMvGEase0QaYYDNdI0H24r3PJtQSFv7W/hqC2pfWR/TlKJSaJntFSE2KoShAZ0MCcaN3Nu0QOAJ13P8FSgfeuzQSSuUqoB74vQ5EfrkvZmmA0mWsJvn5DBHOem/DLHcTwTRlakSKsWNcylSmvBTIJMr+wntBIz/sH2JUvTSl/GX8TiRk18WZMLuUbbylGgCLEt1Z88ABk+bGpFXrAutVgoSEtEzviQnhAEReTkJCt5HK2oksLzs38noHOQZ2fQ1G64qnx2J7c7OVStyR3zEZ/bPbezUCcQ71zBu5kE3XcG4qPtb0c28bBMTQ66NS9r0gB35+rU/nUYKcE7gwHmBF3UGP0MnyPe+YeTEyiSDG8NCAZ+JjHM67tAE8hzjezlxlD0O1kOLRE898QXpSWQrg64TPoFCSMkDjcgIb/aAT/J6NMQONENsuKGEwpJhIEMd7FTMDvtESrHrzebyDgJpsa6zSSkV051JAKjc6YW9zmLaRAzKiMx6qbxsdKIxbFSDV8MXEuf2DBg+qoGsN5Ti7W8vdlJTZrp8nQRQtfSKGrOAPyndUwCLd3b9xkOmnvZaGirpuCUaj+zOg7YQkkAAwBDdXoRxc+nLYU5F81RXnkpbOjCorLHq7TSlVfRvttqoz1BBJlaQgLunK4vPApPQU/v28dTTZ8sS2XTDKL4ZHol71415k38v5P/FyZWBcyqwSiibDU1she/f48H7KxdJQFmGKJohkKCE2MSAvMpXrEW358cJErFbh/g1madXXJR0S8ZDzfc+q0pkLZRsNDojzuvPfdmSfw3QNDDrj+fZltrKRBKQ==",iter:310000};
+let DATA=null;
+const b64buf=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function unlock(){
+  const pw=document.getElementById('pw').value.replace(/\s+/g,'').toLowerCase();
+  const err=document.getElementById('err');
+  if(!pw){err.textContent='Enter the passcode.';return}
+  err.textContent='';
+  try{
+    const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+    const key=await crypto.subtle.deriveKey(
+      {name:'PBKDF2',salt:b64buf(ENC.salt),iterations:ENC.iter,hash:'SHA-256'},
+      km,{name:'AES-GCM',length:256},false,['decrypt']);
+    const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64buf(ENC.iv)},key,b64buf(ENC.ct));
+    DATA=JSON.parse(new TextDecoder().decode(pt));
+  }catch(e){err.textContent='That passcode does not open this tide.';return}
+  document.getElementById('gate').style.display='none';
+  document.getElementById('app').style.display='block';
+  render();
+}
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const money=n=>'$'+Number(n||0).toLocaleString();
+let tab='team';
+function pick(t){tab=t;render()}
+function render(){
+  document.querySelectorAll('.tabbtn').forEach(b=>b.classList.toggle('on',b.dataset.t===tab));
+  document.getElementById('updated').textContent='updated '+DATA.updated;
+  const m=document.getElementById('main');
+  if(tab==='team'){
+    const roster=DATA.players.map(p=>`<tr><td><b>${esc(p.name)}</b></td>
+      <td class="muted">${esc(p.pronouns)}</td><td>${esc(p.label)}</td>
+      <td class="muted">${esc((p.titles||[]).join(', '))}</td></tr>`).join('');
+    const stash=DATA.stash.length?DATA.stash.map(i=>`<tr><td>${esc(i.name)}</td>
+      <td>×${i.qty}</td><td class="muted">${esc(i.desc||'')}</td></tr>`).join('')
+      :'<tr><td colspan="3" class="muted">The stash is empty.</td></tr>';
+    m.innerHTML=`<h1>${esc(DATA.team)}</h1>
+      <div><span class="stat"><div class="v">${money(DATA.treasury)}</div><div class="k">Team Bank</div></span>
+      <span class="stat"><div class="v">${DATA.players.length}</div><div class="k">Players</div></span>
+      <span class="stat"><div class="v">${DATA.stash.length}</div><div class="k">Stash items</div></span></div>
+      <h2>Roster</h2><table><thead><tr><th>Name</th><th>Pronouns</th><th>Label</th><th>Titles</th></tr></thead>
+      <tbody>${roster}</tbody></table>
+      <h2>Team stash</h2><table><thead><tr><th>Item</th><th>Qty</th><th>About</th></tr></thead>
+      <tbody>${stash}</tbody></table>`;
+  }else{
+    m.innerHTML='<h1>Players</h1>'+DATA.players.map(p=>{
+      const sk=Object.entries(p.skills||{}).filter(e=>e[1]>0)
+        .map(e=>e[0].charAt(0).toUpperCase()+e[0].slice(1)+' '+(['','I','II','III','IV','V'][e[1]]||e[1])).join(' · ');
+      const inv=(p.inventory||[]).map(i=>`<tr><td>${esc(i.name)}</td><td>×${i.qty}</td>
+        <td class="muted">${esc(i.desc||'')}</td></tr>`).join('')
+        ||'<tr><td colspan="3" class="muted">Empty bag.</td></tr>';
+      return `<div class="pcard"><h2>${esc(p.name)}</h2>
+        <div class="pmeta">${esc(p.pronouns)}${p.pronouns?' · ':''}<b>${esc(p.label)}</b>
+        ${p.affiliation?' · '+esc(p.affiliation):''}
+        ${(p.titles||[]).length?' · '+esc(p.titles.join(', ')):''}</div>
+        <div class="pmeta">💰 ${money(p.wallet)}${sk?' · 🎓 '+esc(sk):''}</div>
+        <table><thead><tr><th>Item</th><th>Qty</th><th>About</th></tr></thead><tbody>${inv}</tbody></table>
+        </div>`;}).join('');
+  }
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('go').onclick=unlock;
+  document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+});
+</script></body></html>
