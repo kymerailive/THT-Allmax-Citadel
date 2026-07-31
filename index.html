@@ -113,6 +113,21 @@ font-weight:800;cursor:pointer;font:inherit;box-shadow:0 4px 14px rgba(124,92,25
 .npclink{color:var(--text);text-decoration:none;border-bottom:1px dotted var(--faint)}
 .npcgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
 .npcgrid .pcard{margin:0}
+
+/* ---- the forge ---- */
+.pcard label{display:block;margin:12px 0 4px;font-size:13px;color:#9fb0c9}
+.pcard input[type=text],.pcard select,.pcard textarea{
+  width:100%;box-sizing:border-box;padding:9px 11px;border-radius:9px;
+  background:#0d1420;border:1px solid #24344b;color:#e8eef7;
+  font:inherit;font-size:14px}
+.pcard textarea{resize:vertical;min-height:64px}
+.pcard input:focus,.pcard select:focus,.pcard textarea:focus{
+  outline:none;border-color:#4d7fb8}
+#f-send{margin-top:14px;padding:11px 20px;min-height:44px;border-radius:10px;
+  border:none;background:#2f6f4f;color:#fff;font:inherit;font-size:14px;
+  font-weight:600;cursor:pointer}
+#f-send:disabled{opacity:.6;cursor:default}
+.ok{margin-top:10px;color:#6ee7a8;font-size:13px}
 </style></head><body>
 <div id="gate"><div class="gatecard">
   <h1>The Allmax Citadel</h1>
@@ -128,12 +143,14 @@ font-weight:800;cursor:pointer;font:inherit;box-shadow:0 4px 14px rgba(124,92,25
     <button class="tabbtn" data-t="players" onclick="pick('players')">Players</button>
     <button class="tabbtn" data-t="base" onclick="pick('base')">Base</button>
     <button class="tabbtn" data-t="npcs" onclick="pick('npcs')">NPCs</button>
+    <button class="tabbtn" data-t="forge" id="forgetab" style="display:none"
+            onclick="pick('forge')">Forge</button>
     <span class="updated" id="updated"></span>
   </header>
   <div id="main"></div>
 </div>
 <script>
-const ENC={salt:"XQe44V3rQGNr2Ac9/PDnxA==",iv:"XTumwYjg7kuV/Ym6",ct:"CnORV5NiuK1CpwVHYNjZJKyI9SPxcEUjfRsquuw6iZ73O4dgRHO7LVOQB13+h+M0dYNTEQNwAvrzpbZQp3q4Q467TIBRfZFaPabnvfLJaogNEmf12v4/g63BWaki/FT/1L7tK4jM8nqH7dJZTjtw4Wnv1ebgxXo4arMxsBG8cy8iNYVTS+pQC4lvxM3szreO0OLZM9Bn2tbnY/c4+VwZspMVUTz6+ESxl7K+Q6hOCoiuhUWe34V4HmBg9Hs+S3TruE1t59Ul4+hQqDNIILIdMJaIlDKoA3BLU9Xpk/Z86PHf+fbuznd6IpvWJYRARxvIW91CjlcWAJ6YqyRiHuXQxqzPM7CgVkaOE/BZGgd9cF7jM81IXefEKmr+XWohjHJBDAbi7X9yQ9gUiWYoo4+5IosiMDv5vG0LrnuuQjdE+MJHj5bk3LD4AfsZv/jqIBnMBNSVkFKAJTIRhdE4vKYFuKhNeb1HueLoCUFsCCWNvW10MyFRW7AgPjjHIJczlk/HXWFEsqOOgmDriigU2ibw7npFB0BdlMoxUCSG8W9wohhxEF/j2qyE0kgUW+fMW8Wl5isSr4nhXBDMfG2nUP330q7ifhFYAEvu1xo0n6aAEAsn/wRVKZ8FM/pjzdIUy45d/nAHVJglM9v4U1uDetrm6gUBDYUme/J5/Sc8Go0X15KlwhkAtXwk1+6j6xVmH1rZxT5QlK7S2/Uaez9QkyLX/EowwoDWLPwa2p2Unszil2W4iVedjxaNXuzxpuLiuoNUoCa6DJ/R9YIIbPtysb3jDFjFK8uypuEgnlpG4ENZKEKFpOfc9+NoxPaOawkKkVht3ScFa14C8wEkdY2jtn1nlCjurDqJceK1g9oWKG4zDwfL059ZFfvhAlP1se8x2UBjmdzE3TniBpGglzndf+VI3BXcA5ZbCldfVwMGhoL4G8OsmoNnMwt0NA+kY7SU1f+oFNP+InsKIcbKkLk8XCNzCUG5gKmJJbJll97kyZ2tm78IP0yVnePzXb2d+e4G1dT3Zba1O3NW3iNSjrxSxoUp4tnXg6iokedCACnLmCOZ7THJR7JtORcnZRt6P4Y/2/6lG8TlgwTHA/+4IQSu+m0396dZHldD1xbMy0ktD6b0HHtc4F6T134zUY6XzkdeIT5LM9KgI0d4cB1jQJ7G5X0cqsK96jsCuUu6rapK4zyAzuKK7wyBWxr1qSczfXrLgE3f3DXqKWyKvsrKiDcuPLpNME+I5WwvU55FWfZQnEgU1U4H/mdY0ae+Jxp6YYkNjl56LjoKt5HEUgHT6CVXjXEjJERqfZLrJ4PLtDLu+ADuBjQFBAO73/H32pey",iter:310000};
+const ENC={salt:"mQaDYuyRmfCVq9glAoHuoQ==",iv:"0MhjkqChiyCB/4PT",ct:"g7DM4W+EqnjsHV2HI4rWQb8147DOG//dASbkR4no8+mKscaWXy6yLk4G2shTpF9y2g+GaRhlxD2VEQFDFYZ9HjqUb/v9TauDkXit5WftrDOjIC9eY3FLTpvLUuVx+zgebZ9ng64NgJnHUPCbDe+chJiZnuoWDDdhe81N1Cp+shJdyueWd5btbl4vArqYNy5Q/8MI+Yl6pNtGMJyzGDQ0cub7Ly3rBqVBk65emxDL2yYv/viAVPNMj3KSzIkQId5OvKNFw+QjM9jJFbk3UYFxcrKw5dEXSVMOX7FD9sarQ+LeYr2GtocdcN/Jf3JHk9a+KLCW2s7I2KqtfgeXFtDQZGmJdNMHMjvDwBVvUulZPyVETTnnAnQqWu8sSEEa7ms7KcVjvF/kcbKfb04NmImJwOseDwvPxnXHqrOGwWFIaD0Z5kJ+wf3R2wAjhzW0YVivJ0Jaf3rShD3d36qB+z+PFqrFESJnolXgwCgcVX60TysVG73hsnSHGkEeaEiNmOje7BSdfbscqjo+bp6g+7D/z2jcntuP63xNEluxKFYrqFf8FeVLDkVsNPhpdvoSJ37MjX+YlkDantUW6+quuiFWG8+/Su/eFIF+eN0f9nOZk1aIq8EFWFEYiG/i9+kkg4PUbE3T96QtkNMn33YxXlFKafT/eALGibiGpcxja3rwLmE/v2zkgfmlNs3eBzhMMDQTJeRcfjFM5PnT2O+dGkptZCeEgAJDOq/NSD3lJyvifO8l5ARRmNM6ZzZNCtx+pfTgwvnol0Lyi66fcMUmzWam6ppavjENYYNDtGYtcNlq8m8O9bRGvQaAlbd1tUmhr8eM6mTQ5zOSPwN6Boh46CE36aDPpSQMME2aHD7doOk7mP6EzrAXQv4ZALGv8VrnofDhWJyUGTeF796GTc33kcx511IhBF0uWf9Q2fLwiu651BZFGUYRl0nv8rtmHg00q9R0IsalL5uZMpWqXQ6kwvHUa1Lhu/eULOGFyTXA9mUSqWCIrntnQpRhlYB3gS8wmaXd3I0rnRF7hwgFDsegVsV9nfxYKnHtDMswQ0/C2HdZp4XVGzpkgR8yYNr/Si+X7rLQLn/8TxfTwuqeIA0ClINXaJdi3ZfXKhoLE/xCbElZaZCoIVmKrCxUw8P/m9Txbmj2BCpDbiA1zf+fIjByOI3FrY5F7WgkvoYeBBYzn3xUsIlXmHUM30zUdpZJ92hiaMYPbdOBL7FqtxswN5uo97cc1KqrsRw7gdfKOrcVFsGZc9SkFbLV7l5S1CilblPiAdcAZT5hQcdQBrtR+F7ravkvMN8w42emnZmvizm/2MydEtNM+JPF56FsRwAPvGhWs08sK6+AtonGQJtL92EeO6w9znlFSQ==",iter:310000};
 let DATA=null,LIVE=null,liveOk=false,lastSig='',tab='team';
 let selHale=null,selNpc=null;
 const BLOBS={};
@@ -153,6 +170,9 @@ async function unlock(){
   }catch(e){err.textContent='That passcode does not open this tide.';return}
   document.getElementById('gate').style.display='none';
   document.getElementById('app').style.display='block';
+  // The Forge tab exists only for a team that has dealt with Kawelo. Teams who
+  // haven't never see it — the forge is earned in fiction, not advertised.
+  if((DATA.forge||{}).unlocked)document.getElementById('forgetab').style.display='';
   render();
   startLive();
 }
@@ -334,6 +354,8 @@ function render(){
           tab='base';selNpc=c.key;selHale=null;render();
           document.querySelectorAll('.tabbtn').forEach(x=>x.classList.toggle('on',x.dataset.t==='base'))};
       }});
+  }else if(tab==='forge'){
+    m.innerHTML='<h1>The Forge</h1>'+forgeForm();
   }else{
     m.innerHTML='<h1>Players</h1>'+DATA.players.map(p=>{
       const sk=Object.entries(p.skills||{}).filter(e=>e[1]>0)
@@ -348,6 +370,70 @@ function render(){
         <div class="pmeta">💰 ${money(p.wallet)}${sk?' · 🎓 '+esc(sk):''}</div>
         <table><thead><tr><th>Item</th><th>Qty</th><th>About</th></tr></thead><tbody>${inv}</tbody></table>
         </div>`;}).join('');
+  }
+}
+
+/* ---- the forge ----
+   Buy a card from Kawelo, author the NPC here, a dev rules on it. The form
+   shows only the fields that card pays for, and only the jobs still open. */
+function forgeRarity(){
+  const s=document.getElementById('f-rarity');
+  return s?s.value:'common';
+}
+function forgeForm(){
+  const F=DATA.forge||{}, r=forgeRarity();
+  const fields=(F.fields||{})[r]||[];
+  const jobs=(F.jobs||[]).filter(j=>r==='special'||
+      (F.tiers||[]).indexOf(j.tier)<=(F.tiers||[]).indexOf(r));
+  const rows=fields.map(f=>{
+    if(f==='job'){
+      const opts=jobs.map(j=>`<option value="${esc(j.title)}">${esc(j.title)}`
+        +` — ${esc(j.tier)}${j.left!==null&&j.left!==undefined?' ('+j.left+' left)':''}`
+        +`</option>`).join('');
+      return `<label>${esc((F.prompts||{}).job||'Job')}
+        <select id="f-job">${opts||'<option value="">no posts open</option>'}</select></label>`;
+    }
+    const big=['personality','voice','backstory','goal','ability','trait'].indexOf(f)>=0;
+    const p=esc((F.prompts||{})[f]||f);
+    return big?`<label>${p}<textarea id="f-${f}" rows="3"></textarea></label>`
+              :`<label>${p}<input id="f-${f}" type="text"></label>`;
+  }).join('');
+  const face=(F.portrait||[]).indexOf(r)>=0
+    ? `<p class="muted">This card lets you choose their face — hand the picture
+       to a dev when they approve.</p>`
+    : `<p class="muted">The card picks their face from the pool.</p>`;
+  return `<div class="pcard"><h2>Forge an NPC</h2>
+    <p class="muted">${esc((F.blurb||{})[r]||'')}</p>
+    <label>Which card are you spending?
+      <select id="f-rarity" onchange="render()">
+        ${['common','uncommon','rare','legendary','special'].map(x=>
+          `<option value="${x}"${x===r?' selected':''}>${x}</option>`).join('')}
+      </select></label>
+    <label>Your player name<input id="f-player" type="text"
+      placeholder="so the dev knows whose card to take"></label>
+    ${rows}${face}
+    <button id="f-send" onclick="forgeSend()">Send to the devs</button>
+    <div class="err" id="f-err"></div></div>`;
+}
+async function forgeSend(){
+  const F=DATA.forge||{}, r=forgeRarity();
+  const err=document.getElementById('f-err');
+  const body={rarity:r,player:(document.getElementById('f-player')||{}).value||''};
+  ((F.fields||{})[r]||[]).forEach(f=>{
+    const el=document.getElementById('f-'+f);
+    if(el)body[f]=el.value;
+  });
+  body.portrait=(F.portrait||[]).indexOf(r)>=0;
+  const btn=document.getElementById('f-send');
+  if(btn){btn.disabled=true;btn.textContent='Sending…';}
+  try{
+    await api('/api/team/forge-submit',body);
+    err.className='ok';
+    err.textContent='Sent. A dev will confirm your card and make them real.';
+  }catch(e){
+    err.className='err';
+    err.textContent=e.message;
+    if(btn){btn.disabled=false;btn.textContent='Send to the devs';}
   }
 }
 document.addEventListener('DOMContentLoaded',()=>{
