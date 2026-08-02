@@ -142,7 +142,8 @@ font-weight:800;cursor:pointer;font:inherit;box-shadow:0 4px 14px rgba(124,92,25
 .fc-msg.err{color:#e79a9a}
 
 /* ---- forming a squad from the muster ---- */
-.mkrow{margin-top:16px}
+.mkrow{margin:0 0 20px;padding:12px;border-radius:12px;background:#0d1420;
+  border:1px solid #1e2c40}
 .mkrow input{padding:8px 11px;border-radius:9px;background:#0d1420;
   border:1px solid #24344b;color:#e8eef7;font:inherit;font-size:13px;
   margin-right:8px;min-width:200px}
@@ -226,7 +227,7 @@ font-weight:800;cursor:pointer;font:inherit;box-shadow:0 4px 14px rgba(124,92,25
   <div id="main"></div>
 </div>
 <script>
-const ENC={salt:"uX1Eq687rBt3yud+ic2oMA==",iv:"jqh1KjR5dAAZPo8s",ct:"LRf/c1W9Yysj1yoXbxOnanDoTCm4O1JAW5m6Z9BGeSymiH+WXSWnAFxheaunRbG5nAnacGLKRXdYZR6YYOqj51GIBGzKz4JPMB9JvtQtVW6G306MQwWeI0SbQ2LPCaOV5J+Q8oNPnR+hXD1aPQxNFJ5/dSiq0qMddWoXqxpJTT1559vCU0i/MZhzCff9061zqITlvBrn4gxTdrQdzn+BDWRAdogLMTeIlJxGJIcNIo8fS8zVIytRq0LX3K6yBGSzEBNvrAYMhrdPCFicn/ukYyUGqnC03ORewF8/dy0C4A1DeihSmDlxAFOR4LgifsEHCRI+fzO+IWCFQZMZdigs4vp5F9+jN6VT3ORn+ohSdDfJRwQqJJuQCayF/0txJYKfQZZBE6wJ2Ua1qTDQv4zWkS7pGVERdzLjM5KFnuX8eizOnsqZNHCYTg/7zHg7vvWWJDW+Iudr66VWFZxoZnqSu8YbIu8EQAEhzgHKRaJVf4UtsBhV+sLOAqmAZS8TE66ovdB4RsGXsDglbShYqcFlEdiUN9xsjby+7eDHT9FGlmi2xn+LKD9Km4Dn3u1mizM3DKEUaP0CI00jrCFN0a/VY0qNAtqePsvT8SgtZLN4wJEcyMRpvH4Y9Ntqy/4FBQnMKLlghQ4O0JqI3gWOtjuFSakbGShXAXLhp8QrShzJhEhJFDRfzBseTN7RZxkiJgU+kRE41CTzoLWK0sm3lGR2MGYgvwEejjtSWkRGEWllvmKhkTEGcVVrEeR5iS8R6ZMM9Ok6kNl8/SpQKhC0/PJRjg/R2VYwq/o56b/8jYQm1k73bEg4EDib0Od1vBB85ad5oqyA/z+elmvYS4V/BdegfcUz4RFXeaZ+1gQEym60pkjYihierWUFNevb9w9PDhLjZIpjeGwYLTKv5PZwqJyQN/IHH+HI67QGUkT6WrW6QSL1Qv3O5t3zgQ4uzZKYkMYGbTcIXDcZlcl2O3k1W6ZY+MKmUi99tyLsnjJbwgDlZDh/1tj+8ey2LnClvTjsvRBiWjLdYF51ADG4zz3cGf1R/g9TeVu0C+JSAAE82A2sDa8QjtnZoyuIQKurnVVwh9Sl9t00tZ4LNPg76Gkxv7/M9OQwQ43+12/lPzpVhemTmS/YBNEHa56c9lo9UdwSWNrJYALCu9P6pVCBzaXm1sI8oxyUcKM3cOgoSJ5w8SyBeatZtfXxQjq3rkv4Kfv2ueKgjTY9P3PP7tDxHJgNLtYloyd4jUjRvKUqX/HzYaY0zdU3cyH7pWcQgoEJl342tcf1IkKbsil89palTKeyRcq00wFoZ9JguvTw2nrNotIcjucwrdtxTXBr+jfhk1Nz3j6Ygfz3GZhJOSw2TJA1UdL/Gcxqnd7LIZHNbZw/5DQD8FqKpIyLLceBj7uz",iter:310000};
+const ENC={salt:"f/zQ+c6OZ1SfIL/tcFXleQ==",iv:"oKGDyJAKKZNiPO8U",ct:"H+lnPO729O5xZYGiBtg3vyrQWsIlhvrfxsL0BH57moaRL/PVKa/mfNGc0U1MgP9MoZj7RmpY2N7ljt/IAytG3ecFJD0Cae8ZcjmPG7urOx9SV4hGbOD4wazWhrycWdXD18KzxyPpD4zX3ycAs1M5wLsL3LBm1eKGiRFTjb0auc771dHwR/1pNI9KDM1b454sQcmDvTUFjlDtoc3Edp0e7Yytev5vOa5y0XHyADHQyApXMEpSnFFvfnwXhIGRvJrvvV4Z5OGPzKbvpccFRDTuJuqm5QNbaGYVZONQvZoVOynyX6As99kYJ0qYuGvOlJba4/JCY+dyW8DWIknuh3UduuNms187xmQQd3TFJ92/CHA61zfU811CIshtz5/iibLB7czJsBHMajQS4b6okGwDYdtF+9ZR5XmZForGmFgCSZHdDedKjCFgl+gutdDkjCo8PVXofF7rrvJkrOlAfWLgwkG3455xRoRYZOV0YNEva23qcrOlrgROvwGbTCy12FxPAYUPMYpmu4msVm9jSSOakJ5PrRG+iJiSP2v/KbFQy/bJXg8TpAgzNQZla33/vqbTwj0LnQpNa3385BaQgTF5+Ig6mAfd5sYJdgwoD4ULGEJWJhF26FMVE02wdry8qhT+DlPnGPlcDGRvByAyrSuMQScmlhqkl8tPm0pR+uk4/KiyFE+3ewlquVpEoWR+IXPqf1xV0AmYx2U2tsdzq3GIug4r80ppEhHjUenT4wBK+04ft/8T87frAmnniaFVnNuxEYCAyYVJ3AEx9I9fgOn5B2A8s2t4f7zQcxZj3rDZIZO//CbQgErtAbmH7HxRwoVawKeaV9DdMNrUzxeJet+in4DUeru9Fitp7KgFtIQYONrQi0Iltkl3o1dyzvaMePjVQdTH1JffzHdxynr3jpnk1gtXfHYxsfryuzYODlsJyBco67vEzC4FlwFrMWwhyFZ4dhQd6MQbWq9AqPPhnIEIxZzmiGNgSZQYojSIZkkhrl1EgVyOdQwgna62FTD4PBctDPnLc7cnov9RZ0GvR77r2Up0q0/EDzH07qci+TO0Wamdte247USigxikvKg7/rY9ia3jn5jmC6SqzF2QurcXjUJ5TKEAO7fqnrAHxT1l1rqqUR/ydzADnLn//q9Qwwo+vvXnatlJsTQ3+Gxd2R2FWstSfXxEpmU/mJ1yasHjvmfuO/uObsx4CHmaX4AcG42f6n3nRMrWm/vSPLpXM7cPAR0tC81is+jkf93jOdwfaqS+xYn0JhpQj7fGQwFPgqgeBXiKfPe38Y11nTBxvTYy/mYLxQxl1PoNmFHLO91jpGz/HXUskMLwV+VTbUwjY/8xUS+/bhIOnI+zLQ81uCOn6l3Mt1FSfiYpLlPcs1Tlr6MAcZ5k1b6FCFUf",iter:310000};
 let DATA=null,LIVE=null,liveOk=false,lastSig='',tab='team';
 let selHale=null,selNpc=null;
 const BLOBS={};
@@ -535,7 +536,7 @@ function squadsBlock(){
   if(!SQ)return`<div class="muster"><h2>Squads</h2><p class="muted">`
     +(sqErr?esc(sqErr):'Reading the muster roll…')+`</p></div>`;
   const cards=(SQ.squads||[]).map(squadCard).join('')
-    ||`<p class="muted">No squads yet. Form one below, then post people to it —
+    ||`<p class="muted">No squads yet. Name one above, then post people to it —
        or pick <b>+ New squad…</b> straight from any NPC's Posting dropdown,
        which does both at once.</p>`;
   return `<div class="muster">
@@ -546,35 +547,26 @@ function squadsBlock(){
     <label class="whorow">Your player name
       <input id="sq-who" type="text" value="${esc(savedWho())}"
              placeholder="so the log knows who gave the order"></label>
-    ${sqErr?'<div class="err">'+esc(sqErr)+'</div>':''}
-    ${cards}
     <div class="mkrow">
-      <button class="linkbtn" id="sq-open">+ Form a squad</button>
-      <span id="sq-mk" style="display:none">
-        <input id="sq-name" type="text" placeholder="e.g. The Salt Line">
-        <button class="gbtn" id="sq-make">Form it</button>
-        <button class="linkbtn" id="sq-cancel">cancel</button>
-      </span>
-      <p class="hint">An empty squad is fine — post people to it from its own
-      list, or from any NPC's Posting dropdown.</p>
-    </div></div>`;
+      <input id="sq-name" type="text" placeholder="Name a new squad — e.g. The Salt Line">
+      <button class="gbtn" id="sq-make">Form a squad</button>
+      <p class="hint">An empty squad is fine. Post people to it from its own
+      list below, or from any NPC's Posting dropdown.</p>
+    </div>
+    ${sqErr?'<div class="err">'+esc(sqErr)+'</div>':''}
+    ${cards}</div>`;
 }
 function wireSquads(m){
   if(!(DATA.squads&&SQ))return;
   m.querySelectorAll('.squad').forEach(wireSquad);
-  const open=m.querySelector('#sq-open'), box=m.querySelector('#sq-mk');
-  if(open)open.onclick=()=>{
-    box.style.display='';open.style.display='none';
-    m.querySelector('#sq-name').focus();
+  const name=m.querySelector('#sq-name'), make=m.querySelector('#sq-make');
+  const form=()=>{
+    const n=(name||{}).value||'';
+    if(!n.trim()){sqErr='Name the squad first.';render();return}
+    sqCall('/api/team/squad',{action:'create',name:n,player:sqWho()});
   };
-  const cancel=m.querySelector('#sq-cancel');
-  if(cancel)cancel.onclick=()=>{box.style.display='none';open.style.display=''};
-  const make=m.querySelector('#sq-make');
-  if(make)make.onclick=()=>{
-    const n=(m.querySelector('#sq-name')||{}).value||'';
-    if(n.trim())sqCall('/api/team/squad',
-      {action:'create',name:n,player:sqWho()});
-  };
+  if(make)make.onclick=form;
+  if(name)name.addEventListener('keydown',e=>{if(e.key==='Enter')form()});
 }
 /* ---- base map geometry (ring fallback = the bot's base_map_view math) ---- */
 function haleXY(h,i,n,cv){
