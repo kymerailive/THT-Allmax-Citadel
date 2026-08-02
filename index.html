@@ -136,7 +136,7 @@ font-weight:800;cursor:pointer;font:inherit;box-shadow:0 4px 14px rgba(124,92,25
 .fc-file::file-selector-button{margin-right:9px;padding:7px 12px;
   border-radius:8px;border:1px solid #24344b;background:#131c2b;
   color:#c7d4e6;font:inherit;font-size:12.5px;cursor:pointer}
-.fc-go{min-height:40px;padding:8px 18px}
+.lg-go{min-height:40px;padding:8px 18px;margin-top:8px}
 .fc-msg{margin-top:7px;font-size:12.5px}
 .fc-msg.ok{color:#6ee7a8}
 .fc-msg.err{color:#e79a9a}
@@ -168,6 +168,15 @@ font-weight:800;cursor:pointer;font:inherit;box-shadow:0 4px 14px rgba(124,92,25
 #j-new .gbtn{margin-right:12px}
 
 /* ---- squads (inside the NPCs tab) ---- */
+.sqhead{display:flex;gap:14px;align-items:flex-start}
+.sqhead-t{flex:1;min-width:0}
+.sqhead h2{margin-top:0}
+.sqlogo{width:56px;height:56px;border-radius:14px;flex-shrink:0;display:flex;
+  align-items:center;justify-content:center;background:#131c2b;
+  border:1px solid #24344b;color:#7f92ad;font-weight:800;font-size:16px;
+  overflow:hidden}
+.sqlogo img{width:100%;height:100%;object-fit:cover;display:block}
+.logorow{margin-top:14px;padding-top:12px;border-top:1px solid #1e2c40}
 .muster{margin:0 0 26px;padding-bottom:22px;border-bottom:1px solid #1e2c40}
 .muster>h2:first-child{margin-top:0}
 .squad h2{display:flex;align-items:center;gap:10px}
@@ -227,7 +236,7 @@ font-weight:800;cursor:pointer;font:inherit;box-shadow:0 4px 14px rgba(124,92,25
   <div id="main"></div>
 </div>
 <script>
-const ENC={salt:"f/zQ+c6OZ1SfIL/tcFXleQ==",iv:"oKGDyJAKKZNiPO8U",ct:"H+lnPO729O5xZYGiBtg3vyrQWsIlhvrfxsL0BH57moaRL/PVKa/mfNGc0U1MgP9MoZj7RmpY2N7ljt/IAytG3ecFJD0Cae8ZcjmPG7urOx9SV4hGbOD4wazWhrycWdXD18KzxyPpD4zX3ycAs1M5wLsL3LBm1eKGiRFTjb0auc771dHwR/1pNI9KDM1b454sQcmDvTUFjlDtoc3Edp0e7Yytev5vOa5y0XHyADHQyApXMEpSnFFvfnwXhIGRvJrvvV4Z5OGPzKbvpccFRDTuJuqm5QNbaGYVZONQvZoVOynyX6As99kYJ0qYuGvOlJba4/JCY+dyW8DWIknuh3UduuNms187xmQQd3TFJ92/CHA61zfU811CIshtz5/iibLB7czJsBHMajQS4b6okGwDYdtF+9ZR5XmZForGmFgCSZHdDedKjCFgl+gutdDkjCo8PVXofF7rrvJkrOlAfWLgwkG3455xRoRYZOV0YNEva23qcrOlrgROvwGbTCy12FxPAYUPMYpmu4msVm9jSSOakJ5PrRG+iJiSP2v/KbFQy/bJXg8TpAgzNQZla33/vqbTwj0LnQpNa3385BaQgTF5+Ig6mAfd5sYJdgwoD4ULGEJWJhF26FMVE02wdry8qhT+DlPnGPlcDGRvByAyrSuMQScmlhqkl8tPm0pR+uk4/KiyFE+3ewlquVpEoWR+IXPqf1xV0AmYx2U2tsdzq3GIug4r80ppEhHjUenT4wBK+04ft/8T87frAmnniaFVnNuxEYCAyYVJ3AEx9I9fgOn5B2A8s2t4f7zQcxZj3rDZIZO//CbQgErtAbmH7HxRwoVawKeaV9DdMNrUzxeJet+in4DUeru9Fitp7KgFtIQYONrQi0Iltkl3o1dyzvaMePjVQdTH1JffzHdxynr3jpnk1gtXfHYxsfryuzYODlsJyBco67vEzC4FlwFrMWwhyFZ4dhQd6MQbWq9AqPPhnIEIxZzmiGNgSZQYojSIZkkhrl1EgVyOdQwgna62FTD4PBctDPnLc7cnov9RZ0GvR77r2Up0q0/EDzH07qci+TO0Wamdte247USigxikvKg7/rY9ia3jn5jmC6SqzF2QurcXjUJ5TKEAO7fqnrAHxT1l1rqqUR/ydzADnLn//q9Qwwo+vvXnatlJsTQ3+Gxd2R2FWstSfXxEpmU/mJ1yasHjvmfuO/uObsx4CHmaX4AcG42f6n3nRMrWm/vSPLpXM7cPAR0tC81is+jkf93jOdwfaqS+xYn0JhpQj7fGQwFPgqgeBXiKfPe38Y11nTBxvTYy/mYLxQxl1PoNmFHLO91jpGz/HXUskMLwV+VTbUwjY/8xUS+/bhIOnI+zLQ81uCOn6l3Mt1FSfiYpLlPcs1Tlr6MAcZ5k1b6FCFUf",iter:310000};
+const ENC={salt:"c8qmdJQ6nUTzqEvfFOv9SQ==",iv:"D+69kTXh5qFJkM7d",ct:"JcbjOQ2Mq8DW059Ae6sfEH4GJM6CyF66JD/E+7Dw8kMButdDcka+EpsWbNkEqrUqjbor6MwtyY13Kh+2GZ/WBYlcR+dE7FzbrztYy1a9Ce0a80Q2xs9DtcD+Ukf6BhTsn8R3LOypsX6fmDXtK3RuHmCOKVczTrRvI/p3NCoYyiqARW5bPrKKRonhxdvzSltwRSj5MUytuQuTKm8+0lZ+0FS2DNUkQU/ompjQ/uuE2X1oI4UM8tTu/NNDbq9ZSlCCe+LWjgyZIG4mVrRheyA+DptvnFCXY9G+SVfSa8EzZ4QNWV1bY7GuFPSm5mT0slxWzXwZR4mo9f4zHxwBOQJ+RKkdWzV/Tqv9ejzr/q4tbXms+AP1ryb4FR2DJI5hpQ8l23X4bRLj5HY3Q0ZxwgRyM+S+oHchIx81geczv2AAQOoO7xtAxUTFPtN8CqOL3f/DCeDYsVO93RgMwWexshI7g5RQDiMISehiTuIFVxaHL89yIlbJQm3TeZ4ci9evAlR4ZoyN7DU7Os8UoNM1JS4RYdcC0CECYWfff9chl/J2KvTZc+AIJNK8MXQoleeNr0iDRr30eUtzTulhccNNdW86Q/rD5fmir4XFNLiEZuE2W/+AmRuOF4mxE6L/djRb0kDwJJG3bcv/vOTKksawoPtGQ5AMUBr1t8R0hy3ZgF+Zf3LZMA0e6Ekl+GERo5JrbUtlA+ymbP9Tfnk+PHxCkzITkSeVGwV/OwdWwcVC87Wx6VL7hWvxWXJ8ofWgwNJF9wjcWrJQ1nrS+R2rL3lezxZI6kxXe+IYV2MWcQLwzOSKwvKT915XoL2HXNce6alk0LL+qbs+gZjalgITkyOFEprzoIaXZuYT4+VrK5KpF+ej/vxQfW1mWH7xj66U4o19vMbY/NlVaTku5SDgiF2iZRIv3Wej9RZYihNaf7PXme9idMMpvEpwP1+8iJxMfl23V0bvq1Jmy8X7D3oJl6FFW5tRkn5cSVQ88e2jfwaTR5dvy32hiM4BJk7ocjhehbNoEbJdU0fe/TnALoyhzARnJtao019bYRhIOpUIBbSE4DNJr2G15diEZpu2uuTnWTymM7BuwLTmP0H4HJNXXNjIxQQPKEhebp3EUn5J4zJ5F3NJmz0RHi60ZVGI2m9s7h87WK0uQLQ/mVyCCSHydPDK7F3qHSUd2JwUd1OvOAdugWpMGv+2yWAypEm2h9IeXN5dIlQgV953iE5OrBjV42YwTrJPuN+SxY3ewkEcdS3+kLGUVD7VlBQikWZJ36mJrWCATHCS4QIslihXcLCimIeKZZpDtmPe/0cuHTAWaxe+rPXYtz1xOmm+RegyQPF0tF5ldaizYqdnb66T7T90PqfxS/6PAOprIJkTfq7214GU7HLQymmXAfobF9W/hueg",iter:310000};
 let DATA=null,LIVE=null,liveOk=false,lastSig='',tab='team';
 let selHale=null,selNpc=null;
 const BLOBS={};
@@ -479,13 +488,27 @@ function squadCard(s){
       <button class="linkbtn sq-home">recall to base</button></div>`;
   }
   return `<div class="pcard squad" data-sq="${esc(s.id)}">
-    <h2>${esc(s.name)} <button class="linkbtn sq-kill">disband</button></h2>
-    <div class="pmeta">${status}</div>
+    <div class="sqhead">
+      <div class="sqlogo">${esc(initials(s.name))}</div>
+      <div class="sqhead-t">
+        <h2>${esc(s.name)} <button class="linkbtn sq-kill">disband</button></h2>
+        <div class="pmeta">${status}</div>
+      </div>
+    </div>
     <table class="sqtab"><tbody>${rows}</tbody></table>
     <div class="sqadd">
       <select class="sq-new">${free||'<option value="">everyone is posted</option>'}</select>
       <button class="linkbtn sq-add">post to squad</button></div>
-    ${controls}</div>`;
+    ${controls}
+    <div class="logorow">
+      <label class="facelab">${s.logo?'Replace their logo':'Give them a logo'}
+        <input type="file" class="lg-file"
+               accept="image/png,image/jpeg,image/gif,image/webp"></label>
+      <button class="gbtn lg-go">Upload</button>
+      <div class="fc-msg muted lg-msg"></div>
+      <p class="hint">A picture or a gif, 10MB max — the mark this squad
+      carries. It goes with them, and goes when they disband.</p>
+    </div></div>`;
 }
 function placeName(k){
   const p=(SQ&&SQ.places||[]).find(x=>x.key===k);
@@ -494,6 +517,37 @@ function placeName(k){
 function wireSquad(el){
   const sid=el.dataset.sq;
   const q=(s)=>el.querySelector(s);
+  const rec=(SQ.squads||[]).find(x=>x.id===sid)||{};
+  const badge=q('.sqlogo');
+  if(badge&&rec.logo)blobFor('/api/team/squad-logo-img?id='+encodeURIComponent(sid),
+                             'squad:'+sid).then(u=>{
+    if(u)badge.innerHTML='<img src="'+u+'" alt="">'});
+  const lgo=q('.lg-go');
+  if(lgo)lgo.onclick=async()=>{
+    const msg=q('.lg-msg');
+    // classList, not className — the element is re-queried by its .lg-msg
+    // hook, and overwriting className would strip that hook off after the
+    // first message, leaving the second one with nowhere to land.
+    const say=(cls,text)=>{
+      msg.classList.remove('muted','ok','err');
+      msg.classList.add(cls);msg.textContent=text;
+    };
+    let pic;
+    try{pic=await fileB64(q('.lg-file'))}
+    catch(e){say('err',e.message);return}
+    if(!pic){say('muted','Pick a file first.');return}
+    lgo.disabled=true;lgo.textContent='Uploading…';msg.textContent='';
+    try{
+      const j=await api('/api/team/squad-logo',
+        {id:sid,filename:pic.filename,content_type:pic.content_type,data:pic.data});
+      BLOBS['squad:'+sid]=undefined;      // drop the cached old mark
+      if(j&&j.squads)SQ=j;
+      sqErr='';render();
+    }catch(e){
+      say('err',e.message);
+      lgo.disabled=false;lgo.textContent='Upload';
+    }
+  };
   el.querySelectorAll('tr[data-npc]').forEach(tr=>{
     const npc=tr.dataset.npc;
     const sel=tr.querySelector('.sq-role');
@@ -612,17 +666,6 @@ function npcCard(c,withMove){
         ${c.away?'<div class="pmeta"><span class="sqtag walking">away</span>'+esc(c.away)+'</div>':''}
         ${c.squad?'<div class="pmeta muted">🛡️ '+esc(c.squad)+(c.squad_role?' · '+esc(c.squad_role):'')+'</div>':''}
       </div></div>
-    ${(liveOk&&c.forge&&['rare','legendary','special'].indexOf(c.forge.rarity)>=0)?`
-    <div class="facerow">
-      <label class="facelab">Their face
-        <input type="file" class="fc-file" accept="image/png,image/jpeg,image/gif,image/webp">
-      </label>
-      <button class="gbtn fc-go">Upload</button>
-      <div class="fc-msg muted"></div>
-      <p class="hint">A ${esc(c.forge.rarity)} card chooses its own face — upload
-      a picture or a gif (10MB max). Common and Uncommon are given one from the
-      pool instead.</p>
-    </div>`:''}
     ${squadPicker(c)}
     ${c.forge&&c.forge.owner?'<div class="pmeta forgeline">🜲 forged by <b>'
       +esc(c.forge.owner)+'</b>'+(c.forge.rarity?' · '+esc(c.forge.rarity):'')
@@ -637,33 +680,6 @@ function npcCard(c,withMove){
 function wireNpcCard(root,c){
   wirePortrait(root.querySelector('.portrait'),c);
   wireSquadPicker(root);
-  const fgo=root.querySelector('.fc-go');
-  if(fgo)fgo.onclick=async()=>{
-    const inp=root.querySelector('.fc-file'), msg=root.querySelector('.fc-msg');
-    const f=inp&&inp.files&&inp.files[0];
-    if(!f){msg.textContent='Pick a file first.';return}
-    if(f.size>10*1024*1024){msg.textContent='That file is over 10MB.';return}
-    fgo.disabled=true;fgo.textContent='Uploading…';msg.textContent='';
-    try{
-      // Read as base64 — the team API speaks JSON, and a data URL keeps the
-      // bytes intact through it without a multipart parser on either side.
-      const b64=await new Promise((res,rej)=>{
-        const r=new FileReader();
-        r.onload=()=>res(String(r.result).split(',')[1]||'');
-        r.onerror=()=>rej(new Error('could not read that file'));
-        r.readAsDataURL(f);
-      });
-      await api('/api/team/npc-portrait',
-        {npc:c.key,filename:f.name,content_type:f.type,data:b64});
-      msg.className='fc-msg ok';
-      msg.textContent='Uploaded — their face is set.';
-      BLOBS[c.key]=undefined;           // drop the cached old portrait
-      lastSig='';await pollBase();
-    }catch(e){
-      msg.className='fc-msg err';msg.textContent=e.message;
-    }
-    fgo.disabled=false;fgo.textContent='Upload';
-  };
   const go=root.querySelector('.mv-go');
   if(go)go.onclick=async()=>{
     const house=root.querySelector('.mv-house').value;
@@ -760,7 +776,7 @@ function render(){
       const c=(b.npcs||{})[el.dataset.npc];
       if(c){wireNpcCard(el,c);
         el.style.cursor='pointer';
-        el.onclick=e=>{if(e.target.closest('.moverow,.facerow,.sqpick,a'))return;
+        el.onclick=e=>{if(e.target.closest('.moverow,.sqpick,a'))return;
           tab='base';selNpc=c.key;selHale=null;render();
           document.querySelectorAll('.tabbtn').forEach(x=>x.classList.toggle('on',x.dataset.t==='base'))};
       }});
